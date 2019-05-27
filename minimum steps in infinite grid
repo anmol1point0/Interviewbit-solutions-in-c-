@@ -1,0 +1,52 @@
+int Solution::coverPoints(vector<int> &a, vector<int> &b) {
+    int i,count=0,temp=0,temp1=0,temp2=0;
+    int stx=a[0],enx;
+    int sty=b[0],eny;
+    for(i=1;i<a.size();i++){
+        enx=a[i];
+        eny=b[i];
+        if(enx==stx && eny==sty){
+            continue;
+        }
+        else{
+            if(enx==stx){
+                count+=abs(eny-sty);
+            }
+            else if(eny==sty){
+                count+=abs(enx-stx);
+            }
+            else{
+                temp1=abs(eny-sty);
+                temp2=abs(enx-stx);
+                if(temp1<temp2){
+                    count+=temp1;
+                    count+=(temp2-temp1);
+                }
+                else{
+                    count+=temp2;
+                    count+=(temp1-temp2);
+                }
+            /*    if(eny>sty && enx>stx){
+                   // temp=(eny-sty);
+                    stx+=min(temp,;
+                //    count+=(temp+abs(stx-enx));
+                }
+                else if(eny<sty && enx<stx){
+                 //   temp=sty-eny;
+                    stx-=temp;
+                //    count+=(temp+abs(stx-enx));
+                }
+                else if(eny>sty && enx<stx){
+                    stx-=temp;
+                }
+                else{
+                    stx+=temp;
+                }
+                  count+=(temp+abs(stx-enx));*/
+            }
+        }
+        stx=enx;
+        sty=eny;
+    }
+    return count;
+}
