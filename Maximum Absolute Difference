@@ -1,0 +1,21 @@
+int Solution::maxArr(vector<int> &a) {
+    int i,mx;
+    long int n=a.size();
+    vector<long int> s(n),s1(n);
+    
+    for(i=0;i<n;i++){
+        s[i]=(a[i]-i);
+        s1[i]=(a[i]+i);
+    }
+sort(s.begin(),s.end());
+sort(s1.begin(),s1.end());
+    mx=max(s[n-1]-s[0],s1[n-1]-s1[0]);
+     /*   if(abs(a[i]-min)+abs(i-mini)>mxdiff){
+            mxdiff=abs(a[i]-min)+abs(i-mini);
+        }
+        if((i+a[i])<(mini+min)){
+            min=a[i];
+            mini=i;
+        }*/
+    return mx;
+}
