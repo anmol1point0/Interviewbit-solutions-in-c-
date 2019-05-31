@@ -1,0 +1,31 @@
+vector<int> Solution::maxset(vector<int> &a) {
+    int i,n=a.size(),range=0,en=0,j,st=0;
+    long long int sum=0,mx=INT_MIN;
+    vector<int> v;
+    for(i=0;i<n;i++){
+        sum+=a[i];
+        if(a[i]<0){
+            sum=0;
+            st=i;
+        }
+        else{
+            if(sum>mx){
+                mx=sum;
+                en=i;
+                range=en-st;
+            }
+            else if(sum==mx && (i-st)>range){
+                en=i;
+                range=en-st;
+                
+            }
+        }    
+    }
+    i=en-range;
+    for(j=i;j<=en;j++){
+        if(a[j]>=0)
+        v.push_back(a[j]);
+    }
+    return v;
+ 
+}
