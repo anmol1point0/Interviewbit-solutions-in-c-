@@ -1,0 +1,28 @@
+int mycompare(string x,string y){
+    string xy=x.append(y);
+    string yx=y.append(x);
+    return xy.compare(yx)>0?1:0;
+}
+string Solution::largestNumber(const vector<int> &a) {
+    int i,n=a.size(),j=0;
+    vector<string> v;
+    for(i=0;i<n;i++){
+        ostringstream str3;
+        str3<<a[i];
+        string srt1= str3.str();
+        v.push_back(srt1);
+      //  cout<<srt1<<endl;
+    }
+    string ans;
+    sort(v.begin(),v.end(),mycompare);
+    for(i=0;i<n;i++){
+        if(v[0]!=v[n-1])
+            ans=ans.append(v[i]);
+        else{
+            ans=ans.append(v[0]);
+            break;
+        }    
+    }
+    return ans;
+   
+}
