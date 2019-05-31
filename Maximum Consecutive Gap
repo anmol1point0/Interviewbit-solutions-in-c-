@@ -1,0 +1,15 @@
+int Solution::maximumGap(const vector<int> &a) {
+    int i,n=a.size(),st=-1,end=-1,diff=-1;
+    if(n<2)
+        return 0;
+    vector<int> b(n,0);
+    for(i=0;i<n;i++){
+        b[i]=a[i];
+    }
+    sort(b.begin(),b.end());
+    int mx=b[1]-b[0];
+    for(i=1;i<n-1;i++){
+        mx=max(b[i+1]-b[i],mx);
+    }
+    return mx;
+}
