@@ -1,0 +1,39 @@
+vector<vector<int> > Solution::diagonal(vector<vector<int> > &a) {
+    int n=a.size(),p=0,l=0,j=0,i=0,k=0;
+    if(n==0){
+        vector<vector<int> > v;
+        return v;
+    }
+    vector<vector<int> > v(2*a.size()-1);
+    for(i=0;i<a.size();i++){
+  //      cout<<"i is "<<i<<endl;
+        if(i>0){
+    //        cout<<"svd\n";
+            j=n-1;
+            p=j;
+            l=i;
+      //      cout<<l<<" "<<p<<endl;
+           while(p>=i&&l<n){
+        //       cout<<a[l][p]<<endl;
+               v[k].push_back(a[l][p]);
+               p--;
+               l++;
+           }
+           k++;
+           continue;
+        }
+       for(j=0;j<a.size();j++){
+           p=j;
+           l=i;
+           while(p>=0&&l<=j){
+          //     cout<<a[l][p]<<endl;
+               v[k].push_back(a[l][p]);
+               p--;
+               l++;
+           }
+           k++;
+       }
+      // break;
+    }
+    return v;
+}
