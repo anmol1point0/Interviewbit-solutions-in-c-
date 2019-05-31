@@ -1,0 +1,38 @@
+bool Solution::hotel(vector<int> &a, vector<int> &d, int k) {
+  //  cout<<"sv\n";
+    int i,n=a.size(),next=0;
+    vector<pair <int,int> > v;
+    //cout<<"ha\n";    
+    for(i=0;i<n;i++){
+        v.push_back(make_pair(a[i],d[i]));
+    }
+    sort(v.begin(),v.end());
+    int p=1;
+    multiset<int> s;
+    multiset<int>:: iterator itr;
+    if(v[0].first!=v[0].second){
+        s.insert(v[0].second);
+        itr=s.begin();
+    }
+ //   cout<<"haa\n";
+    for(i=1;i<n;i++){
+        next=v[i].first;
+        if(next==v[i].second)
+            continue;
+     //  cout<<"first is "<<*itr<<endl;
+     //   cout<<"next is "<<next<<endl;
+       // cout<<"p is "<<p<<endl;
+       if( (!s.empty() && next<*itr) || s.empty()){
+            if(p<k)
+                p++;
+            else
+                return false;
+        }
+        else
+            s.erase(itr);
+        s.insert(v[i].second);        
+        itr=s.begin();   
+    //    cout<<"first is "<<*itr<<endl;
+    }
+    return true;
+}
