@@ -1,0 +1,52 @@
+vector<int> Solution::flip(string v) {
+    int i,n,sum=0,max=INT_MIN,zero0=0,range=0,st=0,f=0,sti=0;
+    n=v.size();
+    vector<int> a(n,0);
+    int temp=0;
+    vector<int> p;
+    for(i=0;i<n;i++){
+        if(v[i]=='1'){
+            a[i]=-1;
+        }
+        else{
+         
+            a[i]=1;
+        }
+    }
+        for(i=0;i<n;i++){
+            sum+=a[i];
+        //    cout<<"sum is "<<sum<<endl;
+            if(sum<0){
+                sum=0;
+                
+                f=0;
+                continue;
+            }
+            if(a[i]==1){
+               // one1++;
+                if(f==0){
+                    st=i;
+                    f=1;
+                }
+            }
+            if(sum>max){
+                max=sum;
+                    range=i-st+1;
+                    sti=st;
+             //   cout<<"range is "<<range<<endl;
+             //   temp=one+one1-zero0;
+            }
+        //    cout<<"range is "<<range<<endl;
+        }
+       // cout<<"range is "<<range<<endl;
+        if(max==INT_MIN){
+            return p;
+        }
+        else{
+         //   cout<<"range is "<<range<<endl;
+           // cout<<"sti is "<<sti<<endl;
+            p.push_back(sti+1);
+            p.push_back(sti+range);
+            return p;
+        }
+}
