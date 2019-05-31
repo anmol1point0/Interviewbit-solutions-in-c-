@@ -1,0 +1,36 @@
+vector<vector<int> > Solution::generateMatrix(int n) {
+    int i=0,j=0,d=1;
+    vector<vector<int> > a(n,vector<int>(n));
+    int p=1;
+    int z=n/2;
+    if((n%2)!=0)
+        z++;
+//    cout<<"sdf\n";        
+    while(p<=z){
+        for(j=p-1;j<=n-p;j++){
+        //    cout<<"i is "<<i<<"j is "<<j<<endl;
+            a[i][j]=d++;
+        }
+        i++;
+        j--;
+        for(;i<=n-p;i++){
+        //    cout<<"i is "<<i<<"j is "<<j<<endl;
+            a[i][j]=d++;
+        }
+        j--;
+        i--;
+        for(;j>=p-1;j--){
+        //    cout<<"i is "<<i<<"j is "<<j<<endl;
+            a[i][j]=d++;
+        }
+        p++;
+        i--;
+        j++;
+        for(;i>=p-1;i--){
+        //    cout<<"i is "<<i<<"j is "<<j<<endl;
+            a[i][j]=d++;
+        }
+        i++;
+    }
+return a;
+}
